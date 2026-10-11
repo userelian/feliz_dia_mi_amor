@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥀</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -53,7 +53,7 @@ body::before{
     radial-gradient(70vw 70vw at 50% 115%, rgba(27,36,56,.5), transparent 65%);
 }
 .grain{
-  position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.035;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 img{max-width:100%;display:block}
@@ -71,9 +71,9 @@ img{max-width:100%;display:block}
   display:flex;justify-content:space-between;align-items:center;
   padding:20px clamp(18px,4vw,52px);
   font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);
-  transition:background .5s var(--ease),backdrop-filter .5s, padding .5s var(--ease);
+  transition:background .4s var(--ease), padding .4s var(--ease);
 }
-.nav.solid{background:rgba(18,12,11,.72);backdrop-filter:blur(14px);padding-top:14px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.nav.solid{background:rgba(18,12,11,.95);padding-top:14px;padding-bottom:14px;border-bottom:1px solid var(--line)}
 .nav .mark{color:var(--gold);letter-spacing:.4em}
 
 /* ---------- utilidades ---------- */
@@ -110,6 +110,7 @@ section{position:relative;z-index:10}
 /* ---------- HERO ---------- */
 .hero{
   position:relative;
+  perspective:900px;
   min-height:100svh;display:grid;align-items:center;
   grid-template-columns:1.05fr .95fr;gap:clamp(30px,6vw,80px);
   padding:120px clamp(18px,4vw,52px) 80px;width:min(1240px,94vw);margin-inline:auto;
@@ -118,21 +119,21 @@ section{position:relative;z-index:10}
 .frame{
   position:relative;border-radius:230px 230px 26px 26px;overflow:hidden;
   border:1px solid rgba(248,233,220,.16);
-  box-shadow:0 40px 90px -30px rgba(0,0,0,.9), 0 0 0 8px rgba(248,233,220,.03);
+  box-shadow:0 24px 60px -26px rgba(0,0,0,.92);
   animation:float 9s ease-in-out infinite;
 }
-.frame img{aspect-ratio:1/1.08;object-fit:cover;object-position:50% 30%;filter:saturate(1.05) contrast(1.04)}
+.frame img{width:100%;height:auto;aspect-ratio:1/1.08;object-fit:cover;object-position:50% 30%}
 .frame::after{
   content:"";position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(18,12,11,0) 45%,rgba(18,12,11,.62));
 }
 .halo{
   position:absolute;inset:-14% -12%;z-index:-1;border-radius:50%;
-  background:radial-gradient(circle,rgba(232,162,90,.42),rgba(126,35,49,.18) 45%,transparent 70%);
-  filter:blur(38px);animation:flicker 5.5s ease-in-out infinite;
+  background:radial-gradient(circle,rgba(232,162,90,.4),rgba(126,35,49,.2) 45%,rgba(126,35,49,0) 70%);
+  animation:flicker 5.5s ease-in-out infinite;
 }
 @keyframes float{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(-18px) rotate(.4deg)}}
-@keyframes flicker{0%,100%{opacity:.75;transform:scale(1)}45%{opacity:1;transform:scale(1.05)}70%{opacity:.62;transform:scale(.98)}}
+@keyframes flicker{0%,100%{opacity:.72}45%{opacity:1}70%{opacity:.6}}
 
 .hero-text .eyebrow{margin-bottom:20px}
 h1{
@@ -172,7 +173,7 @@ h2 em{font-style:italic;color:var(--gold)}
 }
 .card::before{
   content:"";position:absolute;top:-40%;right:-30%;width:60%;height:180%;
-  background:radial-gradient(circle,rgba(232,162,90,.2),transparent 65%);filter:blur(30px);
+  background:radial-gradient(circle,rgba(232,162,90,.16),rgba(232,162,90,0) 68%);
 }
 .card .num{font-size:.66rem;letter-spacing:.34em;color:var(--amber);text-transform:uppercase;position:relative}
 .reason{
@@ -180,7 +181,7 @@ h2 em{font-style:italic;color:var(--gold)}
   font-style:italic;position:relative;margin:24px 0 30px;
 }
 .reason.swap{animation:swap .6s var(--ease)}
-@keyframes swap{0%{opacity:0;transform:translateY(16px) rotate(.6deg);filter:blur(6px)}100%{opacity:1;transform:none;filter:blur(0)}}
+@keyframes swap{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:none}}
 .card .foot{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;position:relative}
 .dots{display:flex;gap:6px}
 .dots i{width:5px;height:5px;border-radius:50%;background:rgba(248,233,220,.2);transition:.4s var(--ease)}
@@ -191,8 +192,8 @@ h2 em{font-style:italic;color:var(--gold)}
 .envelope{
   width:min(760px,94vw);margin-inline:auto;text-align:center;
   border:1px solid var(--line);border-radius:26px;padding:clamp(38px,7vw,74px) clamp(24px,5vw,60px);
-  background:linear-gradient(170deg,rgba(30,21,19,.85),rgba(18,12,11,.6));
-  backdrop-filter:blur(6px);position:relative;overflow:hidden;
+  background:linear-gradient(170deg,rgba(30,21,19,.92),rgba(18,12,11,.8));
+  position:relative;overflow:hidden;
 }
 .envelope::after{
   content:"";position:absolute;left:50%;top:0;width:1px;height:70px;
@@ -203,12 +204,16 @@ h2 em{font-style:italic;color:var(--gold)}
   background:radial-gradient(circle at 34% 30%,var(--wine-2),var(--wine) 55%,#4E141D);
   box-shadow:0 14px 34px -12px rgba(166,51,69,.9), inset 0 2px 6px rgba(255,255,255,.18);
   display:grid;place-items:center;color:var(--gold);font-family:var(--serif);font-size:1.6rem;
-  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
-  animation:pulse 3.4s ease-in-out infinite;border:1px solid rgba(243,201,140,.35);
+  transition:transform .4s var(--ease);border:1px solid rgba(243,201,140,.35);
+}
+.seal::after{
+  content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  border:1px solid rgba(232,162,90,.55);
+  animation:pulse 3.2s ease-out infinite;
 }
 .seal:hover{transform:scale(1.07) rotate(-6deg)}
 .seal:active{transform:scale(.96)}
-@keyframes pulse{0%,100%{box-shadow:0 14px 34px -12px rgba(166,51,69,.9),0 0 0 0 rgba(232,162,90,.35)}50%{box-shadow:0 14px 34px -12px rgba(166,51,69,.9),0 0 0 22px rgba(232,162,90,0)}}
+@keyframes pulse{0%{transform:scale(1);opacity:.85}70%,100%{transform:scale(1.62);opacity:0}}
 .envelope h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.6rem,3.4vw,2.5rem);margin-bottom:10px}
 .envelope .hint{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
 .letter-body{
@@ -223,7 +228,7 @@ h2 em{font-style:italic;color:var(--gold)}
   opacity:0;transform:translateY(18px);transition:.9s var(--ease);
 }
 .letter-body.open p{opacity:1;transform:none;transition-delay:calc(.35s + var(--i)*.16s)}
-.letter-body .saludo{font-weight:600;color:var(--cream);margin-bottom:26px}
+.letter-body .saludo{font-weight:400;color:var(--cream);margin-bottom:26px;letter-spacing:.01em}
 .letter-body .cierre{margin-top:34px;color:rgba(248,233,220,.72)}
 .letter-body .sign{
   font-style:italic;letter-spacing:.04em;text-align:right;margin-top:6px;
@@ -236,11 +241,11 @@ h2 em{font-style:italic;color:var(--gold)}
   padding:clamp(80px,12vh,140px) clamp(18px,4vw,52px);overflow:hidden;position:relative;
 }
 .finale .bgimg{
-  position:absolute;inset:0;z-index:0;opacity:.2;
+  position:absolute;inset:0;z-index:0;opacity:.15;
   background:url("ellayyo.jpeg") center/cover no-repeat;
-  filter:blur(26px) saturate(1.1);transform:scale(1.15);
+  transform:scale(1.15);
 }
-.finale .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,var(--bg),rgba(23,16,16,.6) 40%,var(--bg))}
+.finale .veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,var(--bg),rgba(23,16,16,.72) 40%,var(--bg))}
 .finale .inner{position:relative;z-index:3;width:min(880px,94vw)}
 .finale h2{font-size:clamp(2.6rem,8vw,5.6rem);line-height:1}
 .finale h2 .grad{background:linear-gradient(100deg,var(--gold),var(--blush) 60%,var(--wine-2));-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -267,7 +272,7 @@ footer b{color:var(--gold);font-weight:400}
 .petal-toggle{
   position:fixed;left:18px;bottom:18px;z-index:55;
   width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
-  background:rgba(18,12,11,.7);backdrop-filter:blur(10px);color:var(--cream);
+  background:rgba(18,12,11,.92);color:var(--cream);
   cursor:pointer;display:grid;place-items:center;transition:.45s var(--ease);
 }
 .petal-toggle:hover{border-color:var(--amber);transform:scale(1.08)}
@@ -306,14 +311,14 @@ html.static{scroll-behavior:auto!important}
 <canvas id="petals" aria-hidden="true"></canvas>
 
 <nav class="nav" id="nav">
-  <span class="mark">08 · Mar</span>
+  <span class="mark">11 · Oct</span>
   <span>para ti, mi amor</span>
 </nav>
 
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div class="hero-text">
-    <p class="eyebrow">Día Internacional de la Mujer</p>
+    <p class="eyebrow">11 de octubre</p>
     <h1>
       <span class="l"><i style="--d:.25s">Feliz día</i></span>
       <span class="l"><i class="accent" style="--d:.42s">de la Mujer</i></span>
@@ -327,7 +332,7 @@ html.static{scroll-behavior:auto!important}
   <div class="hero-photo" id="heroPhoto">
     <div class="halo"></div>
     <div class="frame">
-      <img src="ellayyo.jpeg" alt="Nosotros dos, esa noche" />
+      <img src="ellayyo.jpeg" width="1244" height="1243" fetchpriority="high" decoding="async" alt="Nosotros dos, esa noche" />
     </div>
   </div>
 
@@ -368,7 +373,7 @@ html.static{scroll-behavior:auto!important}
     <div class="letter-body" id="letterBody">
       <div class="rule"></div>
       <p class="saludo" style="--i:0">Mi amor:</p>
-      <p style="--i:1">Hoy es 8 de marzo y el mundo entero se detiene un día para celebrar a las mujeres. Yo no necesito una fecha para eso, pero aprovecho para decírtelo por escrito, sin prisa y sin rodeos.</p>
+      <p style="--i:1">Hoy es 11 de octubre, el Día de la Mujer, y yo no necesito ninguna fecha para celebrarte. Pero aprovecho para decírtelo por escrito, sin prisa y sin rodeos.</p>
       <p style="--i:2">Quiero agradecerte por escucharme incluso cuando no encuentro las palabras, por tu paciencia en los días difíciles y por quedarte siempre, también cuando no hay nada que resolver.</p>
       <p style="--i:3">Me gustas cuando ríes de mis chistes malos, cuando te concentras en algo que te apasiona, cuando me cuentas tu día como si fuera lo más importante del mundo. Me gustas en los buenos días y también en los que todo sale al revés.</p>
       <p style="--i:4">No te pido solo un día al año. Quiero los 365 restantes, los del año que viene y todos los que vengan después, contigo.</p>
@@ -392,7 +397,7 @@ html.static{scroll-behavior:auto!important}
     </div>
 
     <div class="counter reveal" style="--d:320ms">
-      <p class="clabel">cuenta atrás para el próximo 8 de marzo</p>
+      <p class="clabel">cuenta atrás para el próximo 11 de octubre</p>
       <div><b id="cHours">00</b><span>horas</span></div>
       <div><b id="cMins">00</b><span>minutos</span></div>
       <div><b id="cSecs">00</b><span>segundos</span></div>
@@ -418,8 +423,8 @@ html.static{scroll-behavior:auto!important}
    ============================================================ */
 const CFG = {
   apodo: "mi amor",
-  // Fecha y hora objetivo (para la cuenta atrás del final)
-  objetivo: { anio: 2027, mes: 2, dia: 8, hora: 0, min: 0 } // 8 de marzo
+  // Día de la Mujer en este país: 11 de octubre (mes 9 = octubre)
+  objetivo: { mes: 9, dia: 11 }
 };
 
 /* ============================================================
@@ -430,10 +435,11 @@ const ctx = canvas.getContext("2d");
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 let W = 0, H = 0, DPR = 1;
 
+const fine = matchMedia("(pointer: fine)").matches;
 function resize(){
-  DPR = Math.min(devicePixelRatio || 1, 2);
+  DPR = Math.min(devicePixelRatio || 1, fine ? 1.5 : 1.25);
   W = innerWidth; H = innerHeight;
-  canvas.width = W * DPR; canvas.height = H * DPR;
+  canvas.width = Math.round(W * DPR); canvas.height = Math.round(H * DPR);
   canvas.style.width = W + "px"; canvas.style.height = H + "px";
   ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
 }
@@ -441,58 +447,22 @@ addEventListener("resize", resize, {passive:true});
 resize();
 
 const PETAL_COLORS = ["#7E2331","#A63345","#E8A25A","#F3C98C","#E6A6A0","#F8E9DC","#4E141D"];
+const HEART_COLORS = ["#A63345","#E6A6A0","#F3C98C","#F8E9DC"];
+const GLOW_COLORS  = ["#F3C98C","#E8A25A","#F8E9DC"];
 const rand = (a,b) => a + Math.random()*(b-a);
 const pick = arr => arr[(Math.random()*arr.length)|0];
 
 let petalsOn = !reduced;
 const parts = [];
-const MAX = reduced ? 24 : (innerWidth < 700 ? 46 : 84);
+const BASE_MAX = reduced ? 8 : (fine ? (W < 760 ? 36 : 64) : 30);
+let MAX = BASE_MAX;
+let petalCount = 0;
+let spawnQueue = 0;
 
-function makePetal(fromTop){
-  return {
-    type:"petal",
-    x: rand(-40, W+40),
-    y: fromTop ? rand(-120,-10) : rand(-H*0.4, H*0.4),
-    s: rand(9,19),
-    vy: rand(.5,1.5),
-    vx: rand(-.35,.35),
-    rot: rand(0,Math.PI*2),
-    vr: rand(-.022,.022),
-    sway: rand(.6,1.9),
-    phase: rand(0,Math.PI*2),
-    spin: rand(0,Math.PI*2),
-    vs: rand(.015,.05),
-    color: pick(PETAL_COLORS),
-    alpha: rand(.55,1),
-    life: 1
-  };
+function rgba(hex,a){
+  const n = parseInt(hex.slice(1),16);
+  return "rgba("+((n>>16)&255)+","+((n>>8)&255)+","+(n&255)+","+a+")";
 }
-function makeHeart(x,y,ang,power){
-  return {
-    type:"heart", x, y,
-    vx: Math.cos(ang)*power*rand(.5,1.2),
-    vy: Math.sin(ang)*power*rand(.5,1.2) - rand(.5,2),
-    s: rand(6,14), rot: rand(-.4,.4), vr: rand(-.08,.08),
-    color: pick(["#A63345","#E6A6A0","#F3C98C","#F8E9DC"]),
-    alpha: 1, life: 1, g: rand(.09,.17)
-  };
-}
-function makeSpark(x,y){
-  return {
-    type:"spark", x, y,
-    vx: rand(-.5,.5), vy: rand(-.5,.5),
-    s: rand(1.4,3.4), alpha: rand(.25,.8), life: 1,
-    color: pick(["#F3C98C","#E8A25A","#F8E9DC"]), g: -.012
-  };
-}
-
-function fillPetals(){
-  if(!petalsOn) return;
-  const target = MAX;
-  let count = parts.filter(p=>p.type==="petal").length;
-  while(count < target){ parts.push(makePetal(false)); count++; }
-}
-
 function petalPath(c, s){
   c.beginPath();
   c.moveTo(0, -s*0.5);
@@ -508,114 +478,199 @@ function heartPath(c, s){
   c.closePath();
 }
 
-let t = 0;
-function loop(){
-  t += 0.016;
+/* ---- sprites: el brillo va pintado una sola vez (sin shadowBlur) ---- */
+const SZ = 48;
+function makeSprite(color, shape, size){
+  const c = document.createElement("canvas");
+  c.width = c.height = SZ;
+  const x = c.getContext("2d");
+  x.translate(SZ/2, SZ/2);
+  const g = x.createRadialGradient(0,0,1,0,0,SZ/2.8);
+  g.addColorStop(0, rgba(color,.4));
+  g.addColorStop(.5, rgba(color,.12));
+  g.addColorStop(1, rgba(color,0));
+  x.fillStyle = g;
+  x.fillRect(-SZ/2, -SZ/2, SZ, SZ);
+  x.globalAlpha = .96;
+  x.fillStyle = color;
+  shape(x, size);
+  x.fill();
+  return c;
+}
+function makeGlow(color){
+  const c = document.createElement("canvas");
+  c.width = c.height = 16;
+  const x = c.getContext("2d");
+  const g = x.createRadialGradient(8,8,0,8,8,8);
+  g.addColorStop(0, rgba(color,.95));
+  g.addColorStop(.4, rgba(color,.45));
+  g.addColorStop(1, rgba(color,0));
+  x.fillStyle = g;
+  x.fillRect(0,0,16,16);
+  return c;
+}
+const SPR_PETAL = PETAL_COLORS.map(c => makeSprite(c, petalPath, 18));
+const SPR_HEART = HEART_COLORS.map(c => makeSprite(c, heartPath, 12));
+const SPR_GLOW  = GLOW_COLORS.map(makeGlow);
+const K_PETAL = SZ/18, K_HEART = SZ/12, K_GLOW = 3;
+
+/* ---- partículas (type: 0 pétalo · 1 corazón · 2 chispa) ---- */
+function seedPetal(p, fromTop){
+  p.type = 0;
+  p.ci = (Math.random()*PETAL_COLORS.length)|0;
+  p.x = rand(-40, W+40);
+  p.y = fromTop ? rand(-160,-10) : rand(-H*0.4, H*0.4);
+  p.s = rand(11,22);
+  p.vy = rand(.5,1.5); p.vx = rand(-.35,.35);
+  p.rot = rand(0,6.2832); p.vr = rand(-.022,.022);
+  p.sway = rand(.6,1.9); p.phase = rand(0,6.2832);
+  p.spin = rand(0,6.2832); p.vs = rand(.015,.05);
+  p.alpha = rand(.55,1);
+}
+function makePetal(fromTop){ const p = {}; seedPetal(p, fromTop); petalCount++; return p; }
+
+function makeHeart(x,y,ang,power){
+  return {
+    type:1, ci:(Math.random()*HEART_COLORS.length)|0, x, y,
+    vx: Math.cos(ang)*power*rand(.5,1.2),
+    vy: Math.sin(ang)*power*rand(.5,1.2) - rand(.5,2),
+    s: rand(6,14), rot: rand(-.4,.4), vr: rand(-.08,.08),
+    alpha: 1, life: 1, g: rand(.09,.17)
+  };
+}
+function makeSpark(x,y){
+  return {
+    type:2, gi:(Math.random()*GLOW_COLORS.length)|0, x, y,
+    vx: rand(-.5,.5), vy: rand(-.5,.5),
+    s: rand(3,7), alpha: rand(.3,.85), life: 1, g: -.012
+  };
+}
+
+function fillPetals(){
+  if(!petalsOn) return;
+  while(petalCount < MAX) parts.push(makePetal(false));
+}
+function trimPetals(){
+  for(let i = parts.length-1; i >= 0 && petalCount > MAX; i--){
+    if(parts[i].type === 0){ parts.splice(i,1); petalCount--; }
+  }
+}
+
+let raf = 0, prevT = 0, frames = 0, acc = 0;
+
+function loop(now){
+  raf = requestAnimationFrame(loop);
+
+  /* si el equipo va justo, se reducen las partículas automáticamente */
+  const dt = now - prevT; prevT = now;
+  if(dt > 0 && dt < 400){
+    frames++; acc += dt;
+    if(frames >= 90){
+      const avg = acc/frames;
+      if(avg > 27 && MAX > 12){ MAX = Math.max(12, (MAX*0.7)|0); trimPetals(); }
+      else if(avg < 15 && MAX < BASE_MAX){ MAX = Math.min(BASE_MAX, MAX+4); }
+      frames = 0; acc = 0;
+    }
+  }
+
   ctx.clearRect(0,0,W,H);
-  ctx.globalCompositeOperation = "source-over";
+
+  /* lluvia por lotes: evita cientos de temporizadores */
+  let n = 0;
+  while(spawnQueue > 0 && n < 3 && petalCount < MAX + 60){
+    parts.push(makePetal(true)); spawnQueue--; n++;
+  }
 
   for(let i = parts.length-1; i >= 0; i--){
     const p = parts[i];
 
-    if(p.type === "petal"){
-      if(petalsOn === false && p.y > H + 60){ parts.splice(i,1); continue; }
-      p.phase += 0.014 * p.sway;
-      p.x += p.vx + Math.sin(p.phase)*p.sway;
+    if(p.type === 0){                       /* pétalo */
+      p.phase += .014 * p.sway;
+      p.x += p.vx + Math.sin(p.phase) * p.sway;
       p.y += p.vy;
       p.rot += p.vr;
       p.spin += p.vs;
       if(p.y > H + 70 || p.x < -90 || p.x > W + 90){
-        if(petalsOn && parts.filter(q=>q.type==="petal").length <= MAX){
-          Object.assign(p, makePetal(true));
-        } else { parts.splice(i,1); continue; }
+        if(petalsOn && petalCount <= MAX) seedPetal(p, true);
+        else { parts.splice(i,1); petalCount--; continue; }
       }
-      const flip = Math.cos(p.spin);
+      const flip = Math.abs(Math.cos(p.spin));
+      const d = p.s * K_PETAL;
       ctx.save();
       ctx.translate(p.x, p.y);
       ctx.rotate(p.rot);
-      ctx.scale(1, Math.max(.18, Math.abs(flip)));
-      ctx.globalAlpha = p.alpha * (0.6 + 0.4*Math.abs(flip));
-      ctx.fillStyle = p.color;
-      ctx.shadowBlur = 7; ctx.shadowColor = p.color;
-      petalPath(ctx, p.s);
-      ctx.fill();
+      ctx.scale(1, Math.max(.18, flip));
+      ctx.globalAlpha = p.alpha * (.62 + .38*flip);
+      ctx.drawImage(SPR_PETAL[p.ci], -d/2, -d/2, d, d);
       ctx.restore();
     }
 
-    else if(p.type === "heart"){
+    else if(p.type === 1){                  /* corazón */
       p.vy += p.g; p.vx *= .985; p.vy *= .985;
       p.x += p.vx; p.y += p.vy; p.rot += p.vr;
-      p.life -= .011; p.alpha = Math.max(0, p.life);
+      p.life -= .011;
       if(p.life <= 0){ parts.splice(i,1); continue; }
-      ctx.save();
-      ctx.translate(p.x, p.y); ctx.rotate(p.rot);
-      ctx.globalAlpha = p.alpha;
-      ctx.fillStyle = p.color;
-      ctx.globalCompositeOperation = "lighter";
-      ctx.shadowBlur = 16; ctx.shadowColor = p.color;
-      heartPath(ctx, p.s); ctx.fill();
-      ctx.restore();
-    }
-
-    else { // spark
-      p.vx *= .97; p.vy = p.vy*.97 + p.g;
-      p.x += p.vx; p.y += p.vy;
-      p.life -= .022; p.alpha = Math.max(0, p.life * .8);
-      if(p.life <= 0){ parts.splice(i,1); continue; }
+      const d = p.s * K_HEART;
       ctx.save();
       ctx.translate(p.x, p.y);
-      ctx.globalAlpha = p.alpha;
-      ctx.fillStyle = p.color;
-      ctx.globalCompositeOperation = "lighter";
-      ctx.shadowBlur = 14; ctx.shadowColor = p.color;
-      ctx.beginPath(); ctx.arc(0,0,p.s,0,Math.PI*2); ctx.fill();
+      ctx.rotate(p.rot);
+      ctx.globalAlpha = p.life;
+      ctx.drawImage(SPR_HEART[p.ci], -d/2, -d/2, d, d);
       ctx.restore();
     }
-  }
 
-  ctx.globalCompositeOperation = "source-over";
-  requestAnimationFrame(loop);
+    else{                                   /* chispa */
+      p.vx *= .97; p.vy = p.vy*.97 + p.g;
+      p.x += p.vx; p.y += p.vy;
+      p.life -= .022;
+      if(p.life <= 0){ parts.splice(i,1); continue; }
+      const d = p.s * K_GLOW;
+      ctx.globalAlpha = p.alpha * p.life;
+      ctx.drawImage(SPR_GLOW[p.gi], p.x - d/2, p.y - d/2, d, d);
+    }
+  }
+  ctx.globalAlpha = 1;
 }
+function start(){ if(!raf){ prevT = performance.now(); raf = requestAnimationFrame(loop); } }
+function stop(){ if(raf){ cancelAnimationFrame(raf); raf = 0; } }
+document.addEventListener("visibilitychange", ()=>{ document.hidden ? stop() : start(); });
 fillPetals();
-loop();
+start();
 
-/* --- lluvia intensa --- */
-function rain(n){
-  for(let i=0;i<n;i++){
-    setTimeout(()=>{
-      const p = makePetal(true);
-      p.y = rand(-260,-10); p.vy = rand(1.4,3.4); p.s = rand(12,24);
-      parts.push(p);
-    }, i*18);
-  }
-}
+/* --- lluvia intensa (se sirve en cola dentro del bucle: sin setTimeout masivos) --- */
+function rain(n){ spawnQueue = Math.min(spawnQueue + n, 260); }
 function burst(x,y,n){
+  if(parts.length > 320) return;
+  n = reduced ? 6 : n;
   for(let i=0;i<n;i++){
-    const ang = (Math.PI*2*i)/n + rand(-.2,.2);
+    const ang = (6.2832*i)/n + rand(-.2,.2);
     parts.push(makeHeart(x,y,ang,rand(3,7)));
   }
-  for(let i=0;i<26;i++) parts.push(makeSpark(x,y));
+  const s = reduced ? 8 : (fine ? 26 : 14);
+  for(let i=0;i<s;i++) parts.push(makeSpark(x,y));
 }
 
 /* --- interacción global --- */
 addEventListener("pointerdown", e=>{
-  burst(e.clientX, e.clientY, 12);
+  burst(e.clientX, e.clientY, fine ? 12 : 8);
 }, {passive:true});
 
+/* estela del cursor: solo con ratón (en móvil no aporta y costaba FPS) */
 let lastTrail = 0;
 addEventListener("pointermove", e=>{
+  if(!fine || reduced) return;
   const now = performance.now();
-  if(now - lastTrail < 46 || reduced) return;
+  if(now - lastTrail < 70) return;
   lastTrail = now;
   const p = makeSpark(e.clientX, e.clientY);
-  p.s = rand(1.2,2.6); p.life = .8; p.alpha = .5;
+  p.s = rand(3,6); p.life = .75; p.alpha = .5;
   parts.push(p);
 }, {passive:true});
 
 document.getElementById("bigBtn").addEventListener("click", e=>{
   e.stopPropagation();
-  rain(110);
-  burst(innerWidth/2, innerHeight*0.55, 26);
+  rain(fine ? 90 : 55);
+  burst(innerWidth/2, innerHeight*0.55, fine ? 26 : 14);
 });
 
 const toggle = document.getElementById("petalToggle");
@@ -679,10 +734,11 @@ const sealHint = document.getElementById("sealHint");
 function toggleLetter(){
   const open = letterBody.classList.toggle("open");
   sealHint.textContent = open ? "toca otra vez para cerrar" : "toca el sello para abrir";
+  measure(); setTimeout(measure, open ? 1800 : 600);
   if(open){
     const r = seal.getBoundingClientRect();
-    burst(r.left + r.width/2, r.top + r.height/2, 20);
-    rain(40);
+    burst(r.left + r.width/2, r.top + r.height/2, fine ? 20 : 12);
+    rain(fine ? 36 : 20);
   }
 }
 seal.addEventListener("click", e=>{ e.stopPropagation(); toggleLetter(); });
@@ -704,34 +760,51 @@ const io = new IntersectionObserver(entries=>{
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 
 const nav = document.getElementById("nav"), progress = document.getElementById("progress");
+let maxScroll = 1, solid = false, ticking = false;
+function measure(){ maxScroll = Math.max(1, document.documentElement.scrollHeight - innerHeight); }
+addEventListener("resize", measure, {passive:true});
+addEventListener("load", measure);
+
 function onScroll(){
-  const y = scrollY;
-  nav.classList.toggle("solid", y > 60);
-  const max = document.body.scrollHeight - innerHeight;
-  progress.style.width = (max > 0 ? (y/max)*100 : 0) + "%";
-}
-addEventListener("scroll", onScroll, {passive:true}); onScroll();
-
-/* parallax de la foto con el ratón */
-const heroPhoto = document.getElementById("heroPhoto");
-let tx=0, ty=0, cx=0, cy=0;
-addEventListener("pointermove", e=>{
-  tx = (e.clientX/innerWidth - .5) * 26;
-  ty = (e.clientY/innerHeight - .5) * 22;
-},{passive:true});
-(function para(){
-  cx += (tx-cx)*.06; cy += (ty-cy)*.06;
-  if(heroPhoto) heroPhoto.style.transform = `translate3d(${cx}px, ${cy}px, 0) rotateX(${-cy*.16}deg) rotateY(${cx*.16}deg)`;
-  requestAnimationFrame(para);
-})();
-
-/* botones magnéticos */
-document.querySelectorAll(".magnetic").forEach(btn=>{
-  btn.addEventListener("pointermove", e=>{
-    const r = btn.getBoundingClientRect();
-    btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.24}px, ${(e.clientY-r.top-r.height/2)*.32}px)`;
+  if(ticking) return;            /* no medir en cada evento: una vez por frame */
+  ticking = true;
+  requestAnimationFrame(()=>{
+    ticking = false;
+    const y = scrollY;
+    if((y > 60) !== solid){ solid = y > 60; nav.classList.toggle("solid", solid); }
+    progress.style.width = Math.min(100, y/maxScroll*100) + "%";
   });
-  btn.addEventListener("pointerleave", ()=>{ btn.style.transform = ""; });
+}
+addEventListener("scroll", onScroll, {passive:true});
+measure(); onScroll();
+
+/* parallax de la foto: solo con ratón, y el bucle se detiene al quietarse */
+const heroPhoto = document.getElementById("heroPhoto");
+let tx=0, ty=0, cx=0, cy=0, paraRaf=0;
+function para(){
+  cx += (tx-cx)*.07; cy += (ty-cy)*.07;
+  const dx = tx-cx, dy = ty-cy;
+  if(Math.abs(dx) < .05 && Math.abs(dy) < .05){ cx = tx; cy = ty; paraRaf = 0; }
+  else paraRaf = requestAnimationFrame(para);
+  heroPhoto.style.transform = "translate3d("+cx+"px,"+cy+"px,0) rotateX("+(-cy*.16)+"deg) rotateY("+(cx*.16)+"deg)";
+}
+if(fine && !reduced && heroPhoto){
+  addEventListener("pointermove", e=>{
+    tx = (e.clientX/innerWidth - .5) * 26;
+    ty = (e.clientY/innerHeight - .5) * 22;
+    if(!paraRaf) paraRaf = requestAnimationFrame(para);
+  },{passive:true});
+}
+
+/* botones magnéticos (la posición se cachea al entrar, sin medir en cada movimiento) */
+document.querySelectorAll(".magnetic").forEach(btn=>{
+  let r = null;
+  btn.addEventListener("pointerenter", ()=>{ r = btn.getBoundingClientRect(); });
+  btn.addEventListener("pointermove", e=>{
+    if(!r) r = btn.getBoundingClientRect();
+    btn.style.transform = "translate("+((e.clientX-r.left-r.width/2)*.24)+"px,"+((e.clientY-r.top-r.height/2)*.32)+"px)";
+  });
+  btn.addEventListener("pointerleave", ()=>{ btn.style.transform = ""; r = null; });
   btn.addEventListener("click", e=>e.stopPropagation());
 });
 
@@ -739,7 +812,9 @@ document.querySelectorAll(".magnetic").forEach(btn=>{
    CUENTA ATRÁS
    ============================================================ */
 const o = CFG.objetivo;
-const target = new Date(o.anio, o.mes, o.dia, o.hora, o.min, 0).getTime();
+const hoy = new Date();
+let target = new Date(hoy.getFullYear(), o.mes, o.dia, 0, 0, 0).getTime();
+if(target <= hoy.getTime()) target = new Date(hoy.getFullYear() + 1, o.mes, o.dia, 0, 0, 0).getTime();
 function tick(){
   let d = target - Date.now();
   if(d < 0) d = 0;
@@ -753,7 +828,7 @@ function tick(){
 tick(); setInterval(tick, 1000);
 
 /* primera lluvia suave al cargar */
-setTimeout(()=>rain(30), 1400);
+setTimeout(()=>rain(fine ? 24 : 14), 1200);
 
 /* utilidad de desarrollo: ?show=all fuerza la aparición de todas las secciones */
 if(location.search.indexOf("show=all") > -1){
